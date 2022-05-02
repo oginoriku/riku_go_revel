@@ -1,0 +1,10 @@
+version: '2' #docker-composeのバージョンを指定
+services:
+    web:
+      build: . #Dockerfileをビルド
+      command: revel run #docker-compose up の際にアプリケーション実行
+      #command: ls
+      volumes:
+          - ./myapp:/go/src/myapp #作成したフォルダにアプリケーションをマウント
+      ports:
+          - 9000:9000 #ポート9000番の開放

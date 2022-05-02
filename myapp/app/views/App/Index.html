@@ -1,0 +1,28 @@
+{{set . "title" "Home"}}
+{{template "header.html" .}}
+
+<header class="jumbotron" style="background-color:#EEEEEE">
+  <div class="container">
+    <div class="row">
+      <h1 class="display-4">{{.greeting}}</h1>
+      <p class="lead"> Now I am making this application for practice. </p>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="span6">
+      {{template "flash.html" .}}
+      <form action="/App/Hello" method="GET">
+        <label for="exampleFormControlTextarea1">Example textarea</label>
+        {{with $field := field "myName" .}}
+          <textarea class="form-control" name="{{$field.Name}}" value="{{$field.Flash}}" rows="3"></textarea><br/>
+        {{end}}
+        <input type="submit" class="btn btn-primary" value="Say hello!" />
+      </form>
+    </div>
+  </div>
+</div>
+
+{{template "footer.html" .}}
